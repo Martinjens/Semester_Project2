@@ -1,0 +1,29 @@
+{
+  "name": "semester_project2",
+  "version": "1.0.0",
+  "description": "web page for auctions, buying and selling, CSS, HTML, JC",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Martinjens/Semester_Project2.git"
+  },
+  "keywords": [
+    "e-commerce",
+    "website",
+    "auctions",
+    "schoolproject"
+  ],
+  "author": "Martin Jenssen <MarJen58382@stun.noroff.no>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Martinjens/Semester_Project2/issues"
+  },
+  "homepage": "https://github.com/Martinjens/Semester_Project2#readme",
+  "devDependencies": {
+    "prettier": "^3.0.3"
+  }
+}
