@@ -5,8 +5,11 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
+    "lint": "eslint src/**/*.js",
+    "lint-fix": "eslint src/**/*.js --cache --fix",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "format": "prettier -w src/**/*.js"
+    "format": "prettier -w src/**/*.js",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -26,6 +29,20 @@
   "homepage": "https://github.com/Martinjens/Semester_Project2#readme",
   "devDependencies": {
     "eslint": "^8.48.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^14.0.1",
     "prettier": "^3.0.3"
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "*.html": [
+      "prettier --write"
+    ],
+    "*.scss": [
+      "prettier --write"
+    ]
   }
 }
