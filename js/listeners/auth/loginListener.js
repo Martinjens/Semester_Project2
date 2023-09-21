@@ -1,11 +1,11 @@
-import displayMessage from '../../ui/common/displayMessage.js';
+import { displayMessage } from '../../ui/common/displayMessage.js';
 import * as auth from '../../api/auth/login.js';
 import * as storage from '../../services/storage.js';
 
 addEventListener('submit', handleLogin);
 
 export function loginListener() {
-  const form = document.getElementById('loginForm');
+  const form = document.getElementById('#loginForm');
   if (form) {
     form.addEventListener('submit', handleLogin);
   }
@@ -24,12 +24,10 @@ async function handleLogin(event) {
     const { accessToken } = await auth.login(bodyData);
     storage.save('token', accessToken);
 
-    location.href = '../../../index.html';
+    location.href = '../../../dashboard.html';
   } catch (error) {
     console.error(error);
     displayMessage('danger', error, '#message');
-  } finally {
-    button.innerText = 'Login';
   }
 }
 loginListener();

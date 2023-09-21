@@ -1,11 +1,10 @@
-import * as storage from '../../services/storage.js';
+import { removeToken } from '../../helpers/storage.js';
 
-export function logoutListener() {
-  const logoutButton = document.querySelector('#logout');
+export function setLogoutListener() {
+  const button = document.querySelector('#logout');
 
-  logoutButton.addEventListener('click', () => {
-    storage.remove('token');
-    storage.remove('name');
-    location.href = '/';
+  button.addEventListener('click', function () {
+    removeToken();
+    location.href = './index.html';
   });
 }

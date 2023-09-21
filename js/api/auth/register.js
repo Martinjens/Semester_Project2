@@ -2,22 +2,26 @@ import { BASE_URL } from '../../constants/api.js';
 
 export async function register(data) {
   const url = `${BASE_URL}auth/register`;
+  const body = JSON.stringify(data);
 
-  const options = {
-    method: 'POST',
-    body: JSON.stringify(data),
+  const response = await fetch(url, {
     headers: {
-      'Content-type': 'application/json; charset=UTF-8',
+      'Content-Type': 'application/json',
     },
-  };
+    method: 'POST',
+    body,
+  });
 
-  const response = await fetch(url, options);
+  const json = await response.json();
 
-  if (!response.ok) {
-    const json = await response.json();
-    console.log(json.errors[0].message);
-    throw new Error(json.errors[0].message);
+  if (response.ok) {
+    return json;
   }
 
-  return await response.json();
+  if (json && json.errors && Array.isArray(json.errors)) {
+    const errorMessage = json.errors.map((error) => error.message).join('\n');
+    throw new Error(errorMessage);
+  }
+
+  throw new Error('There was an error registering');
 }

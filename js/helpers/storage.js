@@ -7,3 +7,7 @@ export function isLoggedIn() {
 export function getToken() {
   return storage.get('token');
 }
+
+export function removeToken() {
+  localStorage.removeItem('token');
+}

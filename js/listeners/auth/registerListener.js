@@ -1,4 +1,4 @@
-import displayMessage from '../../ui/common/displayMessage.js';
+import { displayMessage } from '../../ui/common/index.js';
 import * as api from '../../api/auth/index.js';
 
 export function registerListener() {
@@ -23,13 +23,16 @@ async function handleRegister(event) {
     const bodyData = { name: name, email: email, password: password };
 
     const response = await api.register(bodyData);
-    displayMessage('success', 'Account created', '#message');
+    displayMessage(
+      'success',
+      'Account created. You can now <a href="../../../log/login.html">log in</a>',
+      '#message',
+    );
     form.reset();
     console.log(response);
-    location.href = '../../../index.html';
   } catch (error) {
-    console.error(error);
-    displayMessage('danger', error, '#message');
+    displayMessage('danger', error.message, '#message');
+    console.log(error);
   } finally {
     fieldset.disabled = false;
   }
