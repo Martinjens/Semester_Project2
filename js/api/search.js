@@ -1,14 +1,14 @@
 import { BASE_URL } from '../constants/api.js';
 
-export async function get() {
-  const url = `${BASE_URL}listings`;
+export async function search(tag) {
+  const url = `${BASE_URL}auction/listings?_tag=${tag}`;
+
   const response = await fetch(url);
-  console.log(response);
 
   if (response.ok) {
     const json = await response.json();
     return json;
   }
 
-  throw new Error('there was an error fetching the auctions');
+  throw new Error('Search failed');
 }

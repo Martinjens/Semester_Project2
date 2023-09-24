@@ -5,8 +5,12 @@ export function displayAuctions(auctions, container) {
   console.log(html);
 }
 
-function createAuction({ title }) {
+function createAuction({ title, media, bids }) {
   const div = document.createElement('div');
-  div.innerText = title;
+  (div.innerText = title), bids;
+  const img = document.createElement('img');
+  img.src = media;
+  img.classList.add('imageStyling');
+  div.appendChild(img);
   return div;
 }

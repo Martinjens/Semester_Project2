@@ -10,10 +10,17 @@ function router() {
   createMenu(path);
   redirectIfLogin(path);
 
+  let listAuctions; // Declare the variable outside the switch
+
   switch (path) {
     case '/':
     case '/index.html':
-      listeners.getAuctions();
+      listAuctions = listeners.getAuctions(); // Assign the value here
+      listAuctions();
+      break;
+    case '/dashboard.html':
+      listAuctions = listeners.getAuctions(); // Assign the value here
+      listAuctions();
       break;
     case '/auth/register.html':
       listeners.registerListener();

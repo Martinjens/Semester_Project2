@@ -2,10 +2,8 @@ import { displayMessage } from '../../ui/common/displayMessage.js';
 import * as auth from '../../api/auth/login.js';
 import * as storage from '../../services/storage.js';
 
-addEventListener('submit', handleLogin);
-
 export function loginListener() {
-  const form = document.getElementById('#loginForm');
+  const form = document.querySelector('#loginForm');
   if (form) {
     form.addEventListener('submit', handleLogin);
   }
@@ -16,7 +14,7 @@ async function handleLogin(event) {
   const email = document.getElementById('email').value;
   const password = document.getElementById('password').value;
 
-  const button = form.querySelector('button');
+  const button = form.querySelector('#loginButton');
   button.innerText = 'Logging in...';
 
   try {
@@ -24,10 +22,11 @@ async function handleLogin(event) {
     const { accessToken } = await auth.login(bodyData);
     storage.save('token', accessToken);
 
-    location.href = '../../../dashboard.html';
+    location.href = '/dashboard.html';
   } catch (error) {
     console.error(error);
-    displayMessage('danger', error, '#message');
+    displayMessage('danger', error.message, '#message');
+  } finally {
+    button.innerText = 'Log in';
   }
 }
-loginListener();

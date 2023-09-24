@@ -1,6 +1,11 @@
 import { isLoggedIn } from './auth.js';
 
-const authRoutes = ['/', '/auth/register.html', '/log/login.html'];
+const authRoutes = [
+  '/',
+  '/auth/register.html',
+  '/log/login.html',
+  '/index.html',
+];
 const protectedRoutes = ['/dashboard.html', '/profile.html'];
 
 export function redirectIfLogin(path) {

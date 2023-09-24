@@ -1,7 +1,7 @@
-import { BASE_URL } from '../../constants/api.js';
+import { BASE_URL, AUCTIONS_LIMIT } from '../../constants/api.js';
 
-export async function get() {
-  const url = `${BASE_URL}listings`;
+export async function get(offset) {
+  const url = `${BASE_URL}listings?limit=${AUCTIONS_LIMIT}&offset=${offset}`;
   const response = await fetch(url);
   console.log(response);
 

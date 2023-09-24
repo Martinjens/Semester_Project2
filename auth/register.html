@@ -6,9 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Register</title>
     <link href="/dist/css/index.css" rel="stylesheet" />
+    <script src="/js/index.js" type="module"></script>
+    <script
+      src="https://kit.fontawesome.com/369239824e.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav class="navbar navbar-expand-sm bg-body-tertiary">
       <div class="container-fluid">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <div class="navbar-nav" id="menu"></div>
@@ -29,7 +34,10 @@
               type="search"
               placeholder="Search"
               aria-label="Search"
+              id="search"
+              list="searchResults"
             />
+            <div id="searchResults" class="search-results"></div>
             <button class="btn btn-outline-success" type="submit">
               Search
             </button>
@@ -39,14 +47,13 @@
     </nav>
     <main class="form-signin w-100 m-auto">
       <div class="container">
-        <div id="message"></div>
         <form id="registerForm">
           <fieldset id="fieldi">
+            <div id="message"></div>
             <div class="mb-3">
               <label for="name" class="form-label">Name</label>
               <input
                 type="text"
-                required
                 class="form-control"
                 name="name"
                 id="name"
@@ -57,14 +64,13 @@
             <div class="mb-3">
               <label for="email" class="form-label"
                 >Email
-                <span class="warning"
+                <span
                   >(Only @(stud.)noroff.no domains are allowed to
                   register)</span
                 ></label
               >
               <input
                 type="email"
-                required
                 pattern="^[\w\-.]+@(stud\.)?noroff\.no$"
                 title="Only @(stud.)noroff.no domais are allowed to register"
                 class="form-control"
@@ -76,7 +82,6 @@
               <label for="password" class="form-label">Password</label>
               <input
                 type="password"
-                required
                 minlength="8"
                 class="form-control"
                 name="password"
@@ -93,6 +98,5 @@
       integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
       crossorigin="anonymous"
     ></script>
-    <script src="/js/index.js" type="module"></script>
   </body>
 </html>

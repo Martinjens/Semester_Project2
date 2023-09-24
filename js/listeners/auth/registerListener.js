@@ -1,4 +1,4 @@
-import { displayMessage } from '../../ui/common/index.js';
+import { displayMessage } from '../../ui/common/displayMessage.js';
 import * as api from '../../api/auth/index.js';
 
 export function registerListener() {
@@ -31,11 +31,9 @@ async function handleRegister(event) {
     form.reset();
     console.log(response);
   } catch (error) {
+    console.log(error.message);
     displayMessage('danger', error.message, '#message');
-    console.log(error);
   } finally {
     fieldset.disabled = false;
   }
 }
-
-registerListener();
